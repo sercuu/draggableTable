@@ -3,23 +3,23 @@
         <thead>
             <tr>
                 <th
-                    v-for="colum in colums"
-                    :id="colum.key"
-                    :key="colum.key"
+                    v-for="column in columns"
+                    :id="column.key"
+                    :key="column.key"
                     draggable="true"
                     @dragstart="dragStart"
                     @dragleave="dragLeave"
                     @drop="drop"
                     @dragover="dragOver"
                 >
-                    {{ colum.title }}
+                    {{ column.title }}
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="data in dataSource" :key="data.key">
-                <td v-for="colum in colums" :key="colum.key">
-                    {{ data[colum.key] }}
+                <td v-for="column in columns" :key="column.key">
+                    {{ data[column.key] }}
                 </td>
             </tr>
         </tbody>
@@ -34,7 +34,7 @@ export default {
             type: Array,
             required: true,
         },
-        colums: {
+        columns: {
             type: Array,
             required: true,
         },
