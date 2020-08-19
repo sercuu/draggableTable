@@ -58,7 +58,8 @@ export default {
             if (draggedItem !== droppedItem) {
                 const draggedItemIndex = this.columns.findIndex((e) => e.key === draggedItem);
                 const dropedItemIndex = this.columns.findIndex((e) => e.key === droppedItem);
-                SetArrayPosition(this.columns, draggedItemIndex, dropedItemIndex);
+                const swapedArr = SetArrayPosition(this.columns, draggedItemIndex, dropedItemIndex);
+                this.columns = [...swapedArr];
             }
         },
     },
