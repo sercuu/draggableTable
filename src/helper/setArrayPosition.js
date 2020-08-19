@@ -1,4 +1,4 @@
-const  setArrayPosition = (arr, old_index, new_index) => {
+const setArrayPosition = (arr, old_index, new_index) => {
     if (new_index >= arr.length) {
         var k = new_index - arr.length + 1;
         while (k--) {
@@ -8,4 +8,4 @@ const  setArrayPosition = (arr, old_index, new_index) => {
     arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
     return arr; // for testing
 };
-export default setArrayPosition
+export default setArrayPosition;
