@@ -8,7 +8,6 @@
             :drop="drop"
             :dragOver="dragOver"
         ></Table>
-        {{ columns }}
     </div>
 </template>
 
