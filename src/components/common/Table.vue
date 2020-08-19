@@ -9,6 +9,8 @@
           draggable="true"
           @dragstart="dragStart"
           @dragleave="dragLeave"
+          @drop="drop"
+          @dragover="dragOver"
         >
           {{ colum.title }}
         </th>
@@ -27,6 +29,6 @@
 <script>
 export default {
   name: "Table",
-  props: ["dataSource", "colums", "dragStart", "dragLeave"],
+  props: ["dataSource", "colums", "dragStart", "dragLeave", "drop", "dragOver"],
 };
 </script>

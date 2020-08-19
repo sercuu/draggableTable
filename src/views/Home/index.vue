@@ -5,6 +5,8 @@
       :colums="COLUMS"
       :dragStart="dragStart"
       :dragLeave="dragLeave"
+      :drop="drop"
+      :dragOver="dragOver"
     ></Table>
   </div>
 </template>
@@ -26,22 +28,26 @@ export default {
     };
   },
   methods: {
+    dragOver(e) {
+      e.preventDefault();
+    },
     dragStart: (e) => {
       e.target.style.opacity = "0.4";
-      localStorage.setItem("dragedItem", e.target.id);
+      e.dataTransfer.setData("text", e.target.id);
     },
     dragLeave: (e) => {
       e.target.style.opacity = "1";
+    },
+    drop: (e) => {
+      e.preventDefault();
+      const draggedItem = e.dataTransfer.getData("text");
       const THIS = e.target.id;
-      const dragedItem = localStorage.getItem("dragedItem");
 
-      e.dataTransfer.effectAllowed = "none";
-      if (dragedItem !== THIS) {
-        console.log("farkli colums");
-        const dragedItemIndex = COLUMS.findIndex((e) => e.key === dragedItem);
+      // Same colums Controller
+      if (draggedItem !== THIS) {
+        const draggedItemIndex = COLUMS.findIndex((e) => e.key === draggedItem);
         const dropedItemIndex = COLUMS.findIndex((e) => e.key === THIS);
-        console.log(dragedItemIndex, dropedItemIndex, "dragedItemIndex");
-        SetArrayPosition(COLUMS, dragedItemIndex, dropedItemIndex);
+        SetArrayPosition(COLUMS, draggedItemIndex, dropedItemIndex);
       }
     },
   },
