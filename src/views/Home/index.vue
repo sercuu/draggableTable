@@ -21,7 +21,6 @@ export default {
     components: {
         Table,
     },
-
     data: () => {
         return {
             dataSource: null,
@@ -33,6 +32,7 @@ export default {
     },
     methods: {
         immutableData() {
+            //  No more side effects
             const newDataSource = [...DATASOURCE];
             const newColumns = [...COLUMNS];
             this.dataSource = newDataSource;

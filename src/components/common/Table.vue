@@ -29,6 +29,7 @@
 <script>
 export default {
     name: "Table",
+
     props: {
         dataSource: {
             type: Array,
